@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>🎄❤️🎁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="prefetch" href="celebration.html">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #1f1f1f, #2c3e50, #2c3e50, #1f1f1f);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .celebration-container {
+            text-align: center;
+            padding: 4rem;
+            background: rgba(44, 62, 80, 0.85);
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .starry-bg {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 
+                1px 1px white,
+                2px 2px white,
+                100px 100px white,
+                200px 200px white;
+            opacity: 0.3;
+            animation: twinkle 1s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.3; }
+            to { opacity: 0.7; }
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .emoji-header {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        p {
+            color: #ffffff;
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+
+        .star {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #fff, #ff6e7f);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: shootingStar 1.5s linear;
+            box-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #ff6e7f;
+        }
+
+        .heart {
+            position: fixed;
+            top: -20px;
+            font-size: 1.8rem;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            animation: iconFall linear infinite;
+        }
+
+        @keyframes iconFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .next-button {
+            margin-top: 2.5rem;
+            padding: 1.2rem 2.8rem;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4);
+            background: linear-gradient(45deg, #ff4778, #ff7d7d);
+        }
+
+        .next-button:active {
+            transform: translateY(-1px);
+        }
+
+        .next-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff3366, transparent, #ff3366);
+            border-radius: 50px;
+            z-index: -1;
+            animation: borderGlow 2s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .next-button:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10vh;
+            color: #fff;
+            font-size: 1.2em;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            animation: snowfall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10vh) translateX(-5px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(20px) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .celebration-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.1)
+            );
+            border-radius: 25px;
+            z-index: -1;
+        }
+
+        /* แก้ไข CSS ของ loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.95);
+            display: none; /* เริ่มต้นซ่อนไว้ */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .loading-icon, .loading-heart, .loading-gift {
+            font-size: 60px;
+            position: relative;
+        }
+
+        .loading-icon {
+            animation: spin 3s infinite linear;
+        }
+
+        .loading-heart {
+            animation: heartBeat 1.5s infinite ease-in-out;
+        }
+
+        .loading-gift {
+            animation: giftBounce 2s infinite ease-in-out;
+        }
+
+        .loading-text {
+            color: #ff6e7f;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(255, 110, 127, 0.5);
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        @keyframes giftBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* เพิ่ม CSS สำหรับ icons ใน loading overlay */
+        .loading-falling-heart {
+            position: fixed;
+            top: -20px;
+            font-size: 1.8rem;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            animation: loadingIconFall linear infinite;
+            z-index: 10000;
+        }
+
+        @keyframes loadingIconFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* เพิ่ม CSS สำหรับ loading star */
+        .loading-star {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #fff, #ff6e7f);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: loadingShootingStar 1.5s linear;
+            box-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #ff6e7f;
+            z-index: 10000;
+        }
+
+        @keyframes loadingShootingStar {
+            0% { 
+                transform: translateY(-10vh) translateX(-100px) rotate(45deg) scale(0);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(50vh) translateX(50px) rotate(45deg) scale(1.5);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) translateX(100px) rotate(45deg) scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+    <audio id="acceptSound" preload="auto">
+        <source src="sounds/accept.mp3" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <div class="starry-bg"></div>
+    <div id="hearts"></div>
+    <div class="celebration-container">
+        <div class="emoji-header">🎄❤️🎁</div>
+        <h1>ขอบคุณที่ทำให้เค้ารัก</h1>
+        <h1>เธอมากขึ้นในทุกวันนะ</h1>
+        <p>เค้ารักเธอมากนะ 💕</p>
+        <button class="next-button" onclick="goToNextPage()">
+            ไปดูของขวัญพิเศษกัน 🎁
+        </button>
+    </div>
+
+    <!-- เพิ่ม loading overlay -->
+    <div class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <div class="loading-icon">🎄</div>
+                <div class="loading-heart">❤️</div>
+                <div class="loading-gift">🎁</div>
+            </div>
+            <div class="loading-text">กำลังเตรียมของขวัญพิเศษ...</div>
+        </div>
+    </div>
+
+    <script>
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = '-10px';
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 1500);
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const emojis = ['❤️', '🎄', '🎁'];
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.animation = `snowfall ${Math.random() * 3 + 2}s linear`;
+            
+            document.body.appendChild(snowflake);
+            
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // เพิ่มฟังก์ชันเล่นเสียง
+        function playSound(audio) {
+            audio.currentTime = 0; // รีเซ็ตเสียงให้เล่นตั้งแต่ต้น
+            audio.play();
+        }
+
+        // เพิ่มฟังก์ชันสร้าง icons สำหรับ loading
+        function createLoadingHearts() {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            const emojis = ['❤️', '🎄', '🎁', '❄️'];
+            const heart = document.createElement('div');
+            heart.className = 'loading-falling-heart';
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            loadingOverlay.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        function createLoadingStar() {
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            const star = document.createElement('div');
+            star.className = 'loading-star';
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = '-10px';
+            loadingOverlay.appendChild(star);
+            setTimeout(() => star.remove(), 1500);
+        }
+
+        // ปรับปรุงฟังก์ชัน goToNextPage
+        function goToNextPage() {
+            const button = document.querySelector('.next-button');
+            button.style.transform = 'scale(0.95)';
+            
+            // เล่นเสียง
+            const acceptSound = document.getElementById('acceptSound');
+            playSound(acceptSound);
+            
+            // แสดง loading overlay
+            const loadingOverlay = document.querySelector('.loading-overlay');
+            loadingOverlay.style.display = 'flex';
+            
+            // เฟดเอาท์ container
+            const container = document.querySelector('.celebration-container');
+            container.style.opacity = '0';
+            container.style.transform = 'scale(0.95)';
+            container.style.transition = 'all 0.5s ease';
+            
+            // สร้าง loading text animation
+            const loadingText = document.querySelector('.loading-text');
+            let dots = 0;
+            const loadingInterval = setInterval(() => {
+                dots = (dots + 1) % 4;
+                loadingText.textContent = 'กำลังเตรียมของขวัญพิเศษ' + '.'.repeat(dots);
+            }, 500);
+            
+            // สร้าง falling icons และ stars ระหว่าง loading
+            const heartInterval = setInterval(createLoadingHearts, 300);
+            const starInterval = setInterval(createLoadingStar, 1000);
+            
+            // หน่วงเวลา 3 วินาทีก่อนเปลี่ย
+            setTimeout(() => {
+                clearInterval(loadingInterval);
+                clearInterval(heartInterval);
+                clearInterval(starInterval);
+                window.location.href = 'final.html';
+            }, 3000);
+        }
+
+        // เพิ่ม event listener สำหรับโหลดเสียง
+        window.addEventListener('load', () => {
+            // โหลดเสียง
+            const acceptSound = document.getElementById('acceptSound');
+            acceptSound.load();
+            
+            // เริ่มสร้าง animations
+            setInterval(createHearts, 300);
+            setInterval(createStar, 1000);
+            setInterval(createSnowflake, 500);
+        });
+    </script>
+</body>
+</html> 

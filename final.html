@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>🎄❤️🎁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #1f3757, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 2rem;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .anniversary-time {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem 2rem;
+            max-width: 600px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        #month-counter {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 110, 127, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        #anniversary-counter {
+            color: #ffffff;
+            font-size: 1.6rem;
+            opacity: 0.9;
+        }
+
+        .photo-container {
+            background: rgba(31, 41, 73, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem;
+            max-width: 500px;
+            width: 90%;
+            margin: 2rem auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 9/16;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .music-player {
+            background: rgba(31, 41, 73, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 25px;
+            max-width: 350px;
+            width: 90%;
+            margin: 2rem auto;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-title {
+            color: #ff9eb5;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 10px rgba(255, 158, 181, 0.3);
+        }
+
+        audio {
+            width: 100%;
+            height: 35px;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff6e7f;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff6e7f, 0 0 40px #ff6e7f;
+            }
+        }
+
+        /* เพิ่ม Animation Elements */
+        .heart, .star, .snowflake {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            font-size: 1.5rem;
+            animation: heartFall linear infinite;
+        }
+
+        .star {
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #fff, #ff6e7f);
+            border-radius: 50%;
+            animation: shootingStar 1.5s linear;
+            box-shadow: 0 0 10px #fff, 0 0 20px #ff6e7f;
+        }
+
+        @keyframes heartFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateY(-10vh) translateX(-100px) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* ปรับแต่ง Message Card */
+        .message-card {
+            background: rgba(31, 41, 73, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .message-content {
+            text-align: center;
+        }
+
+        .message-content h2 {
+            color: #ff9eb5;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-content p {
+            color: #ffffff;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .photo-wrapper {
+            position: relative;
+        }
+
+        .photo-caption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        /* ปรับแต่ง Photo Container */
+        .photo-container {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.5rem;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .photo-wrapper {
+            transform: translateZ(20px);
+            transition: all 0.2s ease;
+        }
+
+        .photo-wrapper img {
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .photo-caption {
+            font-weight: 500;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #ff6e7f, #ffd3d7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .photo-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,110,127,0.2), rgba(255,255,255,0.1));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-wrapper:hover::before {
+            opacity: 1;
+        }
+
+        .photo-caption {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-top: 1rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ปรับแต่ง Music Player */
+        .music-player {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 3rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+        }
+
+        .music-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            background: linear-gradient(45deg, #ff6e7f, #ffd3d7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 110, 127, 0.3);
+        }
+
+        audio {
+            width: 350px;
+            height: 45px;
+            filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* เพิ่ม Hover Effects */
+        .message-card:hover,
+        .photo-container:hover,
+        .music-player:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .photo-wrapper:hover {
+            transform: translateZ(30px) scale(1.02);
+        }
+
+        /* ปรับแต่ง Animation */
+        .heart {
+            filter: drop-shadow(0 0 10px rgba(255, 110, 127, 0.5));
+        }
+
+        .star {
+            box-shadow: 
+                0 0 15px #fff,
+                0 0 30px #ff6e7f,
+                0 0 45px #ff6e7f;
+        }
+
+        /* เพิ่ม Scroll Bar สวยงาม */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6e7f, #ffd3d7);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff5f72, #ffbec3);
+        }
+
+        /* เพิ่ม Loading Effect */
+        .fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.9);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ปรับแต่ง Slideshow */
+        .slides {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slides img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: none;
+        }
+
+        .slides img.active {
+            opacity: 1;
+            display: block;
+        }
+
+        /* ปรับแต่งปุ่มเลื่อนรูป */
+        .slide-buttons button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        .slide-buttons button:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* ปรับแต่ง Dots */
+        .slide-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #fff;
+            transform: scale(1.2);
+        }
+
+        /* เพิ่ม Responsive Design */
+        @media (max-width: 768px) {
+            .photo-container {
+                max-width: 400px;
+            }
+            
+            .music-player {
+                max-width: 300px;
+                padding: 1rem;
+            }
+            
+            .music-title {
+                font-size: 1.1rem;
+            }
+            
+            audio {
+                height: 32px;
+            }
+        }
+
+        /* เพิ่ม animation สำหรับการเปลี่ยนรูป */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.98); }
+        }
+
+        /* ปรับแต่ง Photo Container และ Caption */
+        .photo-container {
+            background: rgba(31, 41, 73, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem;
+            max-width: 500px;
+            width: 90%;
+            margin: 2rem auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 9/16;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ปรับแต่ง Caption */
+        .photo-caption {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.1rem;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 158, 181, 0.3);
+            font-weight: 500;
+        }
+
+        /* ปรับแต่ง Slide Title */
+        .slide-title {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9rem;
+            z-index: 2;
+            backdrop-filter: blur(5px);
+        }
+
+        /* สไตล์ร่วมสำหรับทุกกรอบ */
+        .glass-card {
+            background: rgba(31, 41, 73, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+        }
+
+        /* ปรับแต่งส่วนแสดงเวลา */
+        .anniversary-time {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem 2rem;
+            max-width: 600px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        /* ปรับแต่งการ์ดข้อความ */
+        .message-card {
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        /* ปรับแต่ง Photo Container */
+        .photo-container {
+            padding: 1.5rem;
+            max-width: 500px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        /* ปรับแต่ง Music Player */
+        .music-player {
+            padding: 1.5rem 2rem;
+            max-width: 350px;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        /* เพิ่ม Hover Effects */
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* ปรับแต่ง Content ภายใน */
+        .message-content {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .message-content h2 {
+            color: #ff9eb5;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 158, 181, 0.3);
+        }
+
+        .message-content p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .music-title {
+            color: #ff9eb5;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 158, 181, 0.3);
+        }
+
+        /* ปรับแต่ง Audio Player */
+        audio {
+            width: 100%;
+            height: 35px;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* สไตล์ปุ่มเล่นเพลง */
+        .play-button {
+            background: linear-gradient(45deg, #ff6e7f, #ffd3d7);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 110, 127, 0.3);
+        }
+
+        /* ปรับแต่ง Audio Controls */
+        audio::-webkit-media-controls-panel {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        audio::-webkit-media-controls-play-button {
+            background-color: #ff6e7f;
+            border-radius: 50%;
+        }
+
+        /* เพิ่ม CSS สำหรับวิดีโอ */
+        .slide-video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: none;
+        }
+
+        .slide-video.active {
+            opacity: 1;
+            display: block;
+        }
+
+        /* ปรับแต่ง Video Controls */
+        .slide-video::-webkit-media-controls-panel {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .slide-video::-webkit-media-controls-play-button {
+            background-color: #ff6e7f;
+            border-radius: 50%;
+        }
+
+        .slide-video::-webkit-media-controls-timeline {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="anniversary-time glass-card">
+        <div id="month-counter"></div>
+        <div id="anniversary-counter"></div>
+    </div>
+
+    <div class="message-card glass-card">
+        <div class="message-content">
+            <h2>ถึงคนพิเศษ 💝</h2>
+            <p>ขอบคุณที่เข้ามาเป็นความโชคดีในชีวิต</p>
+            <p>ขอบคุณที่คอยอยู่ข้างๆกันมาตลอด</p>
+            <p>เค้าจะรักและดูแลเธอแบบนี้ไปนานๆเลย</p>
+            <p>เค้าตั้งใจทำเว็บนี้มาให้เธอ แต่เค้าไม่รู้ว่าเธอจะชอบไหมนะ 🥺</p>
+            <p>ถ้าเธอชอบเค้าก็ดีใจที่สุดเลยมัน ถึงจะไม่ดีเท่าไหร่ 😂</p>
+            <p>ปล. ขอบคุณที่อ่านจนจบนะ ❤️</p>
+        </div>
+    </div>
+
+    <div class="photo-container glass-card">
+        <div class="photo-wrapper">
+            <div class="slide-title">Our Special Moments ✨</div>
+            <div class="slide-buttons">
+                <button class="prev-btn" onclick="changeSlide(-1)">❮</button>
+                <button class="next-btn" onclick="changeSlide(1)">❯</button>
+            </div>
+            <div class="slides">
+                <img src="images/anniversary1.jpg" alt="Anniversary Photo">
+                <img src="images/anniversary2.jpg" alt="Anniversary Photo">
+                <img src="images/anniversary3.png" alt="Anniversary Photo">
+                <img src="images/anniversary4.png" alt="Anniversary Photo">
+                <img src="images/anniversary5.png" alt="Anniversary Photo">
+                <img src="images/anniversary6.png" alt="Anniversary Photo">
+                <img src="images/anniversary7.jpg" alt="Anniversary Photo">
+                <img src="images/anniversary8.jpg" alt="Anniversary Photo">
+                <img src="images/anniversary9.png" alt="Anniversary Photo">
+                <img src="images/anniversary10.png" alt="Anniversary Photo">
+                <img src="images/anniversary11.png" alt="Anniversary Photo">
+                <img src="images/anniversary12.png" alt="Anniversary Photo">
+                <img src="images/anniversary13.png" alt="Anniversary Photo">
+                <img src="images/anniversary14.png" alt="Anniversary Photo">
+                <img src="images/anniversary15.png" alt="Anniversary Photo">
+                <!-- เพิ่มรูปภาพตามต้องการ -->
+            </div>
+            <div class="slide-dots"></div>
+        </div>
+    </div>
+
+    <div class="music-player glass-card">
+        <div class="music-title">เพลงนี้เค้าให้เธอ 🎵</div>
+        <audio id="bgMusic" preload="auto">
+            <source src="sounds/love-u-like-that.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        // สร้าง Animation Elements
+        function createHearts() {
+            const emojis = ['❤️', '🎄', '🎁', '❄️', '🎅'];
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            star.style.top = '-10px';
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 1500);
+        }
+
+        // อัพเดทเวลาครบรอบ
+        function updateAnniversaryTime() {
+            const startDate = new Date('2024-06-29'); // วันเริ่มต้น
+            const now = new Date();
+            
+            // คำนวณจำนวนเดือน
+            let months = (now.getFullYear() - startDate.getFullYear()) * 12;
+            months += now.getMonth() - startDate.getMonth();
+            if (now.getDate() < startDate.getDate()) {
+                months--;
+            }
+            
+            // คำนวณเวลาที่ผ่านมา
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // แสดงจำนวนเดือน
+            document.getElementById('month-counter').innerHTML = 
+                `ครบรอบ ${months} เดือนแล้วนะ ❤️`;
+            
+            // แสดงเวลาที่ผ่านมา
+            document.getElementById('anniversary-counter').innerHTML = 
+                `${days} วัน ${hours} ชั่วโมง ${minutes} นาที ${seconds} วินาที`;
+        }
+
+        // เริ่ม Animations และอัพเดทเวล
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.message-card, .photo-container, .music-player');
+            elements.forEach((element, index) => {
+                element.classList.add('fade-in');
+                element.style.animationDelay = `${index * 0.3}s`;
+            });
+            
+            setInterval(createHearts, 300);
+            setInterval(createStar, 1000);
+            setInterval(updateAnniversaryTime, 1000);
+            updateAnniversaryTime();
+        });
+
+        // เพิ่ม Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // ฟังก์ชัสำหรับการเปลี่ยนภาพใน Slideshow
+        function changeSlide(n) {
+            const slides = document.querySelectorAll('.slides img, .slides video');
+            const slideDots = document.querySelectorAll('.slide-dots span');
+            
+            let currentSlideIndex = Array.from(slides).findIndex(slide => 
+                slide.classList.contains('active')
+            );
+            
+            // หยุดวิดีโอเมื่อเปลี่ยนสไลด์
+            slides.forEach(slide => {
+                if (slide.tagName === 'VIDEO' && !slide.paused) {
+                    slide.pause();
+                    slide.currentTime = 0;
+                }
+            });
+            
+            currentSlideIndex = (currentSlideIndex + n + slides.length) % slides.length;
+            
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            slideDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        // เพิ่มฟังก์ชันควบคุมเสียงเพลง
+        window.addEventListener('load', () => {
+            const bgMusic = document.getElementById('bgMusic');
+            
+            // ตั้งค่าเริ่มต้น
+            bgMusic.volume = 0.5; // ตั้งระดับเสียงที่ 50%
+            
+            // เล่นเพลงอัตโนมัติเมื่อโหลดหน้าเว็บ
+            const playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    // เล่นเพลงสำเร็จ
+                    bgMusic.loop = true; // เล่นซ้ำ
+                })
+                .catch(error => {
+                    // บราวเซอร์บล็อกการเล่นอัตโนมัติ
+                    console.log("Auto-play was prevented");
+                    // สร้างปุ่มเล่นเพลง
+                    createPlayButton();
+                });
+            }
+        });
+
+        // ฟังก์ชันสร้างปุ่มเล่นเพลง
+        function createPlayButton() {
+            const musicPlayer = document.querySelector('.music-player');
+            const playButton = document.createElement('button');
+            playButton.className = 'play-button';
+            playButton.innerHTML = '▶️ เล่นเพลง';
+            playButton.onclick = () => {
+                const bgMusic = document.getElementById('bgMusic');
+                bgMusic.play();
+                playButton.style.display = 'none';
+            };
+            musicPlayer.appendChild(playButton);
+        }
+    </script>
+</body>
+</html>
